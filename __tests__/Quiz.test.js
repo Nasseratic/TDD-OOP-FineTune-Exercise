@@ -8,13 +8,11 @@ describe("Quiz class", () => {
   it("when adding question, the question should be added correctly", () => {
     const Question = require("../src/Question");
     const quiz = new Quiz();
-    expect(
-      quiz.addQuestion({
-        text: "apple begins with?",
-        choices: ["a", "b", "c"],
-        correctAnswerIndex: 0
-      })
-    ).toBeInstanceOf(Question);
+    quiz.addQuestion({
+      text: "apple begins with?",
+      choices: ["a", "b", "c"],
+      correctAnswerIndex: 0
+    });
     expect(quiz.questions[0]).toEqual(
       new Question({
         text: "apple begins with?",
@@ -53,6 +51,7 @@ describe("Quiz class", () => {
       { answer: 1, correct: true }
     ]);
   });
+
   it("student should be able to submit quizes (Partial)", () => {
     const Quiz = require("../src/Quiz");
 
@@ -72,9 +71,10 @@ describe("Quiz class", () => {
 
     // assume student can't answer index 1 before answring index 0
     aQuiz.submit({ studentId: "st1", answers: [0] });
-    expect(aQuiz.question[0].getStudentAnswer("st1")).toBeDefined();
-    expect(aQuiz.question[1].getStudentAnswer("st1")).toBeUndefined();
+    expect(aQuiz.questions[0].getStudentAnswer("st1")).toBeDefined();
+    expect(aQuiz.questions[1].getStudentAnswer("st1")).toBeUndefined();
   });
+
   it("a quiz should be graded correctly", () => {
     const aQuiz = new Quiz();
 

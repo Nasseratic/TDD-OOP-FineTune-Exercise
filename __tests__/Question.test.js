@@ -11,7 +11,8 @@ describe("Qestion class", () => {
       expect(question).toEqual({
         text: "apple begins with?",
         choices: ["a", "b", "c"],
-        correctAnswerIndex: 0
+        correctAnswerIndex: 0,
+        answers: {}
       });
     });
 
@@ -44,7 +45,7 @@ describe("Qestion class", () => {
       });
       question.answer({ studentId: "s1", answer: 0 });
       expect(question.getStudentAnswer("s1")).toEqual({
-        answer: 1,
+        answer: 0,
         correct: true
       });
     });
