@@ -18,4 +18,17 @@ module.exports = class Class {
     this.students.push(student);
     student.join(this);
   }
+
+  grade() {
+    let grades = {};
+    for (const quiz of this.quizes) {
+      for (const [studentId, grade] of Object.entries(quiz.grade())) {
+        if (grades[studentId] === undefined) {
+          grades[studentId] = 0;
+        }
+        grades[studentId] += grade;
+      }
+    }
+    return grades;
+  }
 };

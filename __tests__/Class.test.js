@@ -56,4 +56,35 @@ describe("Class class", () => {
     expect(aStudent.classes).toContain(aClass);
     expect(aStudent.classes).toContain(anotherClass);
   });
+
+  it("classes can be graded", () => {
+    const Student = require("../src/Student");
+    const aClass = new Class({ name: "Math" });
+
+    aClass.addQuiz([
+      { text: "2+3 ?", choises: ["3", "5", "2"], correctAnswerIndex: 1 }
+    ]);
+
+    aClass.addQuiz([
+      { text: "2+3 ?", choises: ["3", "5", "2"], correctAnswerIndex: 1 }
+    ]);
+
+    // assume that no students can submit but the students joined the class, just for simplicity
+    // student 1
+    aClass.quizes[0].submit({ studentId: "st1", answers: [0] });
+
+    // student 2
+    aClass.quizes[0].submit({ studentId: "st2", answers: [1] });
+
+    // student 1
+    aClass.quizes[1].submit({ studentId: "st1", answers: [1] });
+
+    // student 2
+    aClass.quizes[1].submit({ studentId: "st2", answers: [1] });
+
+    expect(aClass.grade()).toEqual({
+      ["st1"]: 1,
+      ["st2"]: 2
+    });
+  });
 });
