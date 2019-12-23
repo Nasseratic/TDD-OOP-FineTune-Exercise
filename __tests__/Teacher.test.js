@@ -5,7 +5,7 @@ describe("Teacher class", () => {
     it("when create new teacher, it should be created correctly", () => {
       const TEACHER_NAME = "Mark";
       const teacher = new Teacher({ name: TEACHER_NAME });
-      expect(teacher).toEqual({ name: TEACHER_NAME });
+      expect(teacher).toEqual({ name: TEACHER_NAME, classes: [] });
     });
 
     it("when create new teacher with missing params, it should throw an error", () => {
@@ -19,12 +19,11 @@ describe("Teacher class", () => {
     it("when teacher create a new class, it should be created and added correctly", () => {
       const Class = require("../src/Class");
       const aTeacher = new Teacher({ name: "Mark" });
-      const aClass = new Class({ name: "Math2" });
-      expect(
-        aTeacher.createNewClass({
-          name: "Math2"
-        })
-      ).toEqual(aClass);
+      const CLASS_NAME = "Math2";
+      const aClass = new Class({ name: CLASS_NAME });
+      aTeacher.createNewClass({
+        name: CLASS_NAME
+      });
       expect(aTeacher.classes[0]).toEqual(aClass);
     });
   });
