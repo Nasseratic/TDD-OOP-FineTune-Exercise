@@ -3,5 +3,10 @@ module.exports = class Student {
     if (name === undefined) throw Error("Student must have a name");
 
     this.name = name;
+    this.classes = [];
+  }
+
+  join(newClass) {
+    this.classes.push(newClass);
   }
 };
