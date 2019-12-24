@@ -1,11 +1,11 @@
 const Quiz = require("../src/Quiz");
 
 describe("Quiz class", () => {
-  it("when create new quiz, it should be created correctly", () => {
+  it("on creating a new quiz, it should be created correctly", () => {
     expect(new Quiz()).toBeDefined();
   });
 
-  it("when adding question, the question should be added correctly", () => {
+  it("on adding a question, the question should be added correctly", () => {
     const Question = require("../src/Question");
     const quiz = new Quiz();
     quiz.addQuestion({
@@ -22,7 +22,7 @@ describe("Quiz class", () => {
     );
   });
 
-  it("students can submit answers to quizes", () => {
+  it("students can submit answers to quizzes", () => {
     const aQuiz = new Quiz();
 
     aQuiz.addQuestion({
@@ -52,7 +52,7 @@ describe("Quiz class", () => {
     ]);
   });
 
-  it("student should be able to submit quizes (Partial)", () => {
+  it("student should be able to submit quizzes (partial submission)", () => {
     const Quiz = require("../src/Quiz");
 
     const aQuiz = new Quiz();

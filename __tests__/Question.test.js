@@ -1,8 +1,8 @@
 const Question = require("../src/Question");
 
-describe("Qestion class", () => {
-  describe("create new queations", () => {
-    it("when create a new instance of Qestion, it should be created correctly", () => {
+describe("Question class", () => {
+  describe("create new questions", () => {
+    it("on creating a new instance of Question, it should be created correctly", () => {
       const question = new Question({
         text: "apple begins with?",
         choices: ["a", "b", "c"],
@@ -16,7 +16,7 @@ describe("Qestion class", () => {
       });
     });
 
-    it("when create a new instance of Qestion with missing params, it should throw error", () => {
+    it("on creating a new instance of Question with missing params, it should throw error", () => {
       expect(
         () =>
           new Question({
@@ -27,7 +27,7 @@ describe("Qestion class", () => {
   });
 
   describe("answering questions", () => {
-    it("when a question is answered, the question the answer should be saved", () => {
+    it("when a question is answered, the question answer should be saved", () => {
       const question = new Question({
         text: "apple begins with?",
         choices: ["a", "b", "c"],
